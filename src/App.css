@@ -1,8 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap');
-
-#root{
-  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
-}
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap');
 
 .recipeContainer{
   margin: 10px auto;
@@ -171,6 +167,7 @@
   display: flex;
   flex-direction: column;
   min-height: 400px;
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
 }
 
 @media only screen and (max-width: 400px){
