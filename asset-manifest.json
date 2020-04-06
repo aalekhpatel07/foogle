@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/foogle/static/css/main.fae42c28.chunk.css",
+    "main.css": "/foogle/static/css/main.8cebaaf9.chunk.css",
     "main.js": "/foogle/static/js/main.650a23fa.chunk.js",
     "main.js.map": "/foogle/static/js/main.650a23fa.chunk.js.map",
     "runtime-main.js": "/foogle/static/js/runtime-main.35059e07.js",
@@ -8,16 +8,16 @@
     "static/js/2.19d9d3d5.chunk.js": "/foogle/static/js/2.19d9d3d5.chunk.js",
     "static/js/2.19d9d3d5.chunk.js.map": "/foogle/static/js/2.19d9d3d5.chunk.js.map",
     "index.html": "/foogle/index.html",
-    "precache-manifest.1825f84f7569bf94bb0a0294ce116d6d.js": "/foogle/precache-manifest.1825f84f7569bf94bb0a0294ce116d6d.js",
+    "precache-manifest.5c81bb30653736ced29ae28b0778d7f4.js": "/foogle/precache-manifest.5c81bb30653736ced29ae28b0778d7f4.js",
     "service-worker.js": "/foogle/service-worker.js",
-    "static/css/main.fae42c28.chunk.css.map": "/foogle/static/css/main.fae42c28.chunk.css.map",
+    "static/css/main.8cebaaf9.chunk.css.map": "/foogle/static/css/main.8cebaaf9.chunk.css.map",
     "static/js/2.19d9d3d5.chunk.js.LICENSE.txt": "/foogle/static/js/2.19d9d3d5.chunk.js.LICENSE.txt",
     "static/media/foogle.png": "/foogle/static/media/foogle.f7fe1a38.png"
   },
   "entrypoints": [
     "static/js/runtime-main.35059e07.js",
     "static/js/2.19d9d3d5.chunk.js",
-    "static/css/main.fae42c28.chunk.css",
+    "static/css/main.8cebaaf9.chunk.css",
     "static/js/main.650a23fa.chunk.js"
   ]
 }
