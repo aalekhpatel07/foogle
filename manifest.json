@@ -1,0 +1,6 @@
+{
+  "short_name": "Foogle",
+  "name": "Foogle. Google, but for food recipes.",
+  "start_url": ".",
+  "display": "standalone"
+}
