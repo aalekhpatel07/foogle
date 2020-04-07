@@ -4,31 +4,27 @@ import Recipe from './Recipe';
 import SearchBar from './SearchBar';
   
 const Container = () => {
-    function getRecipeURL(keyword, from, to){
-        const API_KEY = '8baf31646a8d0037546284406907bb6d';
-        const application_ID = '0fd4faa5';
-        const url = 'https://api.edamam.com/search';
-        return url + `?q=${keyword}&app_id=${application_ID}&app_key=${API_KEY}&from=${from}&to=${to}`; 
-    }
     const [recipes, setRecipes] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
-    const getRecipe = async(keyword, from, to) => {
+    const getRecipe = async(keyword) => {
         if(keyword === ''){
             return;
         }
-        const res = await fetch(getRecipeURL(keyword, from, to), {
+        const res = await fetch('http://localhost:1337/api/recipes', {
         headers: {
-            'Accept-Encoding': 'gzip'
+            'Accept-Encoding': 'gzip',
+            'Content-Type': 'application/json'
         },
-        method: 'GET'
+        method: 'POST',
+        body: JSON.stringify({
+            keyword:keyword+""
+        })
         });
         const data = await res.json();
-        if(data.hits.length > 0){
-            setRecipes(data.hits);    
-        }else{
+        if(data.hits.length === 0){
             window.alert(`No recipes found for ${keyword}. Please try another item.`);
-        }
+        }else setRecipes(data.hits);    
     };
 
     const execute = (keyword) => {
@@ -37,9 +33,8 @@ const Container = () => {
     };
 
     useEffect(()=>{
-        getRecipe(searchTerm, 0, 50);
+        getRecipe(searchTerm);
     }, [searchTerm]);
-
 
     return(
         <div className="App">
@@ -47,23 +42,15 @@ const Container = () => {
         <div className="recipeContainer">
             {recipes.map(recipe => (
             <Recipe
-            key={recipe.recipe.label+''+ Math.random()}
-            title={recipe.recipe.label}
-            image={recipe.recipe.image}
-            ingredientLines={recipe.recipe.ingredientLines}
-            tags={
-                function (){
-                const dietLabels = recipe.recipe.dietLabels;
-                const healthLabels = recipe.recipe.healthLabels;
-                const tags = [];
-                dietLabels.forEach( dlabel => tags.push(dlabel));
-                healthLabels.forEach( hlabel => tags.push(hlabel));
-                return tags;
-                }()
-            }
-            source={recipe.recipe.source}
-            url={recipe.recipe.url}
-            cookingTime={recipe.recipe.totalTime}
+            key={recipe.title+''+ Math.random()}
+            title={recipe.title}
+            image={recipe.image}
+            ingredientLines={recipe.ingredients}
+            tags={recipe.tags}
+            source={recipe.source}
+            url={recipe.url}
+            cookingTime={recipe.cookingTime}
+            keyword={recipe.keyword}
             />
             ))}
         </div>

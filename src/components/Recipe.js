@@ -18,7 +18,7 @@ const Recipe = ({title, image, ingredientLines, tags, source, url, cookingTime})
                 <div className="centering">
                     <img src={image} alt={title}/>
                         <div className="centering tag-container">
-                            {tags.map((t: string) => (
+                            {tags.map((t) => (
                                 <RecipeTag key={t+''+Math.random()} label={t} />
                             ))}
                         </div>
@@ -26,7 +26,7 @@ const Recipe = ({title, image, ingredientLines, tags, source, url, cookingTime})
                 <div className="centering ingredients">
                     <ul>
                     {ingredientLines.map((ing) => (
-                        <li>
+                        <li key={ing+''+Math.random()}>
                             {ing}
                         </li>
                     ))}
