@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { TailSpin } from 'svg-loaders-react';
 const SearchBar = ({id, parentCallBack}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,6 +15,9 @@ const SearchBar = ({id, parentCallBack}) => {
         <button id={function(){return id + '-button';}()} type="submit" className="button-style-e">
           Search
         </button>
+        <div id={function(){return id + '-loadingIcon';}()} className="loading-svg d-none">
+        <TailSpin/>
+      </div>
       </form>
     </div>
     );

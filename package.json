@@ -16,7 +16,8 @@
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.20",
     "react-native-elements": "^1.2.7",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "svg-loaders-react": "^2.2.1"
   },
   "scripts": {
     "server": "nodemon app.js",

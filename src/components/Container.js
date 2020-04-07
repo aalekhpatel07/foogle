@@ -11,6 +11,12 @@ const Container = () => {
         if(keyword === ''){
             return;
         }
+        let searchButton = document.getElementById('recipeSearch-button');
+        let loadingIcon = document.getElementById('recipeSearch-loadingIcon');
+        let searchBar = document.getElementById('recipeSearch-keyword');
+        searchButton.classList.toggle('d-none');
+        loadingIcon.classList.toggle('d-none');
+        searchBar.disabled = 'true';
         const res = await fetch('http://localhost:1337/api/recipes', {
         headers: {
             'Accept-Encoding': 'gzip',
@@ -22,6 +28,9 @@ const Container = () => {
         })
         });
         const data = await res.json();
+        searchButton.classList.toggle('d-none');
+        loadingIcon.classList.toggle('d-none');
+        searchBar.disabled = null;
         if(data.hits.length === 0){
             window.alert(`No recipes found for ${keyword}. Please try another item.`);
         }else setRecipes(data.hits);    
@@ -29,7 +38,12 @@ const Container = () => {
 
     const execute = (keyword) => {
         setSearchTerm(keyword);
-        console.log(keyword);
+        // console.log(keyword);
+    };
+
+    const topFunction = () => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     };
 
     useEffect(()=>{
@@ -40,6 +54,9 @@ const Container = () => {
         <div className="App">
         <SearchBar id="recipeSearch" parentCallBack={execute}/>
         <div className="recipeContainer">
+            <div id="scrollButton" className="scroll-button d-none" onClick={topFunction}>
+                top
+            </div>
             {recipes.map(recipe => (
             <Recipe
             key={recipe.title+''+ Math.random()}

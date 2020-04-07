@@ -6,6 +6,7 @@ const morgan = require('morgan');
 require('./config/database/connection/connection');
 const Recipe = require('./config/database/models/Recipe');
 const fetch = require("node-fetch");
+const path = require('path');
 
 let app = express();
 
@@ -15,12 +16,11 @@ app.use(helmet());
 app.use(cors());
 app.use(morgan('common'));
 
+app.use(express.static(path.join(__dirname, '/build')));
+
 
 function getRecipeURL(keyword, from, to){
-    const API_KEY = '8baf31646a8d0037546284406907bb6d';
-    const application_ID = '0fd4faa5';
-    const url = 'https://api.edamam.com/search';
-    return url + `?q=${keyword}&app_id=${application_ID}&app_key=${API_KEY}&from=${from}&to=${to}`; 
+    return `https://api.edamam.com/search?q=${keyword}&app_id=${process.env.edamam_recipe_app_id}&app_key=${process.env.edamam_recipe_api_key}&from=${from}&to=${to}`;
 }
 async function getRecipe (keyword, from=0, to=100) {
     if(keyword === ''){
@@ -83,7 +83,6 @@ async function doTheWork(word){
 }
 
 app.post('/api/recipes', (req, res)=>{
-
     let { keyword } = req.body;
     doTheWork(keyword).then(result => {
         res.json({hits:result});
