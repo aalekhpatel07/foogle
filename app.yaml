@@ -1,0 +1,7 @@
+runtime: nodejs12
+api_version: 1
+
+env_variables:
+  edamam_recipe_api_key: "8baf31646a8d0037546284406907bb6d"
+  edamam_recipe_app_id: "0fd4faa5"
+  MONGO_DB: "mongodb+srv://aalekhpatel07:Cruizepatel79998@@foogle-app-etneh.gcp.mongodb.net/Foogle?retryWrites=true&w=majority"
